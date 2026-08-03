@@ -1,0 +1,35 @@
+// ETL transformation from XML to JSON
+// Uses Eclipse Epsilon's JSON driver with JSONObject and JSONArray types
+
+rule Book2JsonBook
+    transform b : Source!t_book
+    to jb : Target!JSONObject {
+
+    // Set title property directly
+    jb.title = b.e_title.text;
+
+    // Create authors array
+    jb.authors = new Target!JSONArray;
+    for (author in b.c_author) {
+        jb.authors.add(author.text);
+    }
+
+    // Add optional properties using null safe navigation
+    jb.year = b.e_year?.text;
+    jb.isbn = b.e_isbn?.text;
+}
+
+rule Library2JsonRoot
+    transform l : Source!t_library
+    to root : Target!JSONObject {
+
+    // Create books array and add all transformed books
+    root.books = new Target!JSONArray;
+    root.books.addAll(Source!t_book.all.equivalent());
+}
+
+post {
+    // CRITICAL: Set the root element for the JSON model
+    // Without this, the JSON file will be empty
+    Target.root = Source!t_library.all.first.equivalent();
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+    <book>
+        <title>The Pragmatic Programmer</title>
+        <author>Andrew Hunt</author>
+        <author>David Thomas</author>
+        <year>1999</year>
+        <isbn>978-0201616224</isbn>
+    </book>
+    <book>
+        <title>Clean Code</title>
+        <author>Robert C. Martin</author>
+        <year>2008</year>
+        <isbn>978-0132350884</isbn>
+    </book>
+    <book>
+        <title>Design Patterns</title>
+        <author>Erich Gamma</author>
+        <author>Richard Helm</author>
+        <author>Ralph Johnson</author>
+        <author>John Vlissides</author>
+        <year>1994</year>
+        <isbn>978-0201633610</isbn>
+    </book>
+</library>
