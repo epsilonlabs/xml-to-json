@@ -5,6 +5,7 @@ output.json
 *.war
 *.ear
 .idea/
+.vscode/
 *.iml
 .settings/
 .classpath

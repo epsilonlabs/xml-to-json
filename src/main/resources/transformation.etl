@@ -13,23 +13,20 @@ rule Book2JsonBook
     for (author in b.c_author) {
         jb.authors.add(author.text);
     }
-
-    // Add optional properties using null safe navigation
-    jb.year = b.e_year?.text;
-    jb.isbn = b.e_isbn?.text;
+    
+    // Copy year and isbn
+    if (b.e_year.isDefined()) jb.year = b.e_year.text;
+    if (b.e_isbn.isDefined()) jb.isbn = b.e_isbn.text;
 }
 
 rule Library2JsonRoot
     transform l : Source!t_library
     to root : Target!JSONObject {
-
+    
+    // Set the root object of the JSON model
+    Target.root = root;
+    
     // Create books array and add all transformed books
     root.books = new Target!JSONArray;
-    root.books.addAll(Source!t_book.all.equivalent());
-}
-
-post {
-    // CRITICAL: Set the root element for the JSON model
-    // Without this, the JSON file will be empty
-    Target.root = Source!t_library.all.first.equivalent();
+    root.books ::= l.c_book;
 }
