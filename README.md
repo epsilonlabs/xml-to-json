@@ -1,6 +1,9 @@
 # XML to JSON Transformation using Epsilon
 
-This is a standalone Java application that demonstrates how to transform XML documents to JSON using Eclipse Epsilon's ETL (Epsilon Transformation Language) with plain XML and JSON drivers.
+This is a standalone Java application that demonstrates how to transform XML documents to JSON 
+using the [Epsilon Transformation Language](https://eclipse.dev/epsilon/doc/etl/) with Epsilon's
+[plain XML](https://eclipse.dev/epsilon/doc/articles/plain-xml/) and 
+[JSON](https://eclipse.dev/epsilon/doc/articles/json-emc/) drivers.
 
 ## Prerequisites
 
