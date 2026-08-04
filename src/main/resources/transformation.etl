@@ -28,5 +28,10 @@ rule Library2JsonRoot
     
     // Create books array and add all transformed books
     root.books = new Target!JSONArray;
-    root.books ::= l.c_book;
+    
+    // l.c_book.equivalent() returns all the JSON book objects
+    // transformed from the XML library's book elements
+    root.books.addAll(l.c_book.equivalent());
+    // ... or more concisely
+    // root.books ::= l.c_book;
 }
